@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useLogin from "../../../apis/user/login";
 import { useRedirect } from "../../../hooks";
@@ -88,13 +89,17 @@ const LoginForm = () => {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+
   return (
     <SBox>
       <SH1>로그인</SH1>
       <SLoginSection>
         <LoginForm />
         <SocialLogin />
-        <SSignupButton>회원가입</SSignupButton>
+        <SSignupButton onClick={() => navigate("/signup")}>
+          회원가입
+        </SSignupButton>
       </SLoginSection>
     </SBox>
   );
